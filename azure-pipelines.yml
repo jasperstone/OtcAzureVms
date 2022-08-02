@@ -25,4 +25,4 @@ steps:
     inlineScript: |
       az --version
       az group create --name $(resourceGroupName) --location $(location)
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters adminUsername='administrator' adminPassword=$(adminPassword)
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters adminUsername='jasper' adminPassword=$(adminPassword)
