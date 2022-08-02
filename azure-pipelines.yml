@@ -18,10 +18,10 @@ steps:
   displayName: Deploy Azure Resources
   env:
     adminPassword: adminPassword=$(adminPassword)
-  inputs:    
+  inputs:
     azureSubscription: $(azureServiceConnection)
     scriptType: bash
-    scriptLocation: inlineScript    
+    scriptLocation: inlineScript
     inlineScript: |
       az --version
       az group create --name $(resourceGroupName) --location $(location)
