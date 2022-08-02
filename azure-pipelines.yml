@@ -9,7 +9,7 @@ variables:
   azureServiceConnection: JaspersAzureSubscription
   resourceGroupName: 'exampleRG'
   location: 'eastus'
-  templateFile: 'AzureResourceFiles\vm.bicep'
+  templateFile: 'AzureResourceFiles/vm.bicep'
 pool:
   vmImage: $(vmImageName)
 
