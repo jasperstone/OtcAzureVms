@@ -15,13 +15,13 @@ pool:
 
 steps:
 - task: AzureCLI@2
-  inputs:
-    displayName: Deploy Azure Resources
+  displayName: Deploy Azure Resources
+  env:
+    adminPassword: adminPassword=$(adminPassword)
+  inputs:    
     azureSubscription: $(azureServiceConnection)
     scriptType: bash
-    scriptLocation: inlineScript
-    env:
-      adminPassword: adminPassword=$(adminPassword)
+    scriptLocation: inlineScript    
     inlineScript: |
       az --version
       az group create --name $(resourceGroupName) --location $(location)
