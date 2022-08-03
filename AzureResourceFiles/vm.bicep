@@ -9,9 +9,6 @@ param adminPassword string
 @description('Unique DNS Name for the Public IP used to access the Virtual Machine.')
 param dnsLabelPrefix string = toLower('${vmName}-${uniqueString(resourceGroup().id, vmName)}')
 
-@description('Name for the Public IP used to access the Virtual Machine.')
-param publicIpName string = 'myPublicIP'
-
 @description('Allocation method for the Public IP used to access the Virtual Machine.')
 @allowed([
   'Dynamic'
@@ -100,12 +97,15 @@ param location string = resourceGroup().location
 @description('Name of the virtual machine.')
 param vmName string = 'simple-vm'
 
+@description('Name for the Public IP used to access the Virtual Machine.')
+param publicIpName string = '${vmName}_PublicIP'
+
 var storageAccountName = 'bootdiags${uniqueString(resourceGroup().id)}'
 var nicName = '${vmName}_Nic'
 var addressPrefix = '10.0.0.0/16'
 var subnetName = 'Subnet'
 var subnetPrefix = '10.0.0.0/24'
-var virtualNetworkName = 'MyVNET'
+var virtualNetworkName = '${vmName}_VNET'
 var networkSecurityGroupName = 'default-NSG'
 
 resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
