@@ -1,0 +1,13 @@
+steps:
+- task: AzureCLI@2
+  displayName: Deploy Azure Resources
+  env:
+    adminPassword: adminPassword=$(adminPassword)
+  inputs:
+    azureSubscription: $(azureServiceConnection)
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az --version
+      az group create --name $(resourceGroupName) --location $(location)
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters vmName=$(VMNAME) adminUsername='jasper' adminPassword=$(adminPassword)

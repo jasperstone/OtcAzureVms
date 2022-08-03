@@ -1,0 +1,5 @@
+variables:
+  azureServiceConnection: JaspersAzureSubscription
+  resourceGroupName: 'OTCTestResources'
+  location: 'eastus'
+  templateFile: '$(system.defaultworkingdirectory)/AzureResourceFiles/vm.bicep'

@@ -1,28 +1,15 @@
 trigger:
 - master
 
-name: Deploy Bicep files
+pool:
+  vmImage: 'ubuntu-latest'
 
 variables:
-  vmImageName: 'ubuntu-latest'
+  - template: Templates/vars.yml
 
-  azureServiceConnection: JaspersAzureSubscription
-  resourceGroupName: 'exampleRG'
-  location: 'eastus'
-  templateFile: '$(system.defaultworkingdirectory)/AzureResourceFiles/vm.bicep'
-pool:
-  vmImage: $(vmImageName)
-
-steps:
-- task: AzureCLI@2
-  displayName: Deploy Azure Resources
-  env:
-    adminPassword: adminPassword=$(adminPassword)
-  inputs:
-    azureSubscription: $(azureServiceConnection)
-    scriptType: bash
-    scriptLocation: inlineScript
-    inlineScript: |
-      az --version
-      az group create --name $(resourceGroupName) --location $(location)
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters adminUsername='jasper' adminPassword=$(adminPassword)
+jobs:
+  - job:
+    variables:
+      VMNAME: 'USS-SRV-11'
+    steps:
+    - template: Templates/vm-creation-steps.yml
