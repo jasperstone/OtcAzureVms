@@ -101,7 +101,7 @@ param location string = resourceGroup().location
 param vmName string = 'simple-vm'
 
 var storageAccountName = 'bootdiags${uniqueString(resourceGroup().id)}'
-var nicName = 'myVMNic'
+var nicName = '${vmName}_Nic'
 var addressPrefix = '10.0.0.0/16'
 var subnetName = 'Subnet'
 var subnetPrefix = '10.0.0.0/24'
