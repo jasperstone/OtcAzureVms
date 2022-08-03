@@ -13,3 +13,13 @@ jobs:
       VMNAME: 'USS-SRV-11'
     steps:
     - template: Templates/vm-creation-steps.yml
+  - job:
+    variables:
+      VMNAME: 'USS-SRV-12'
+    steps:
+    - template: Templates/vm-creation-steps.yml
+  - job:
+    variables:
+      VMNAME: 'USS-SRV-13'
+    steps:
+    - template: Templates/vm-creation-steps.yml
